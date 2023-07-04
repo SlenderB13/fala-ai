@@ -1,5 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { User } from "./user.interface";
+import { CreateUserDTO } from "./dtos/create-user.dto";
+import { randomUUID } from "crypto";
 
 @Injectable()
 export class UsersService {
@@ -9,10 +11,16 @@ export class UsersService {
         return this.users;
     }
 
-    public create(user: User): User {
-        const { id, name, email } = user;
+    public create(user: CreateUserDTO): User {
+        const { name, email } = user;
 
-        return user;
+        const newUser: User = {
+            id: randomUUID(),
+            name,
+            email
+        }
+
+        return newUser;
     }
 
     public delete(user: User): void {
