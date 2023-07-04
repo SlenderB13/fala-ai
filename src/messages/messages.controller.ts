@@ -2,7 +2,6 @@ import { Body, Controller, Get, Post } from "@nestjs/common";
 import { CreateMessageDTO } from "./dtos/create-message.dto";
 import { MessagesService } from "./messages.service";
 import { Message } from "./message.interface";
-import { randomUUID } from "node:crypto"
 
 @Controller()
 export class MessagesController {
