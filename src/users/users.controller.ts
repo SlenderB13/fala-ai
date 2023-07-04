@@ -17,12 +17,6 @@ export class UsersController {
 
     @Post("/users")
     public async create(@Body() createUserDTO: CreateUserDTO): Promise<User> {
-        const { name, email } = createUserDTO;
-
-        return this.userService.create({
-            id: randomUUID(),
-            name: name,
-            email: email
-        })
+        return this.userService.create(createUserDTO)
     }
 }
