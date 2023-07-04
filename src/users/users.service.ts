@@ -20,6 +20,8 @@ export class UsersService {
             email
         }
 
+        this.users.push(newUser);
+
         return newUser;
     }
 

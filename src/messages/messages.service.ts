@@ -21,6 +21,8 @@ export class MessagesService {
         user
        }
 
+       this.messages.push(newMessage);
+       
         return newMessage;
     }
 }
