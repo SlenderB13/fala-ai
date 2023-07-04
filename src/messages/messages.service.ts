@@ -1,5 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { Message } from "./message.interface";
+import { randomUUID } from "node:crypto";
+import { CreateMessageDTO } from "./dtos/create-message.dto";
 
 @Injectable()
 export class MessagesService {
@@ -9,9 +11,16 @@ export class MessagesService {
         return this.messages;
     }
 
-    public create(message: Message): Message {
-        const { id, content, sentAt, user } = message;
+    public create(message: CreateMessageDTO): Message {
+        const { content, user } = message;
 
-        return message;
+       const newMessage: Message = {
+        id: randomUUID(),
+        content,
+        sentAt: new Date(),
+        user
+       }
+
+        return newMessage;
     }
 }
