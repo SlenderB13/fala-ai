@@ -16,14 +16,7 @@ export class MessagesController {
     }
 
     @Post("/messages")
-    public async create(@Body() createMessageDTO: CreateMessageDTO): Promise<Message> {
-        const { content, sentAt, user } = createMessageDTO;
-
-        return this.messagesService.create({
-            id: randomUUID(),
-            content: content,
-            sentAt: sentAt,
-            user: user
-        })
+    public async create(@Body() createMessageDTO: CreateMessageDTO): Promise<CreateMessageDTO> {
+        return this.messagesService.create(createMessageDTO);
     }
 }
